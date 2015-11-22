@@ -1,0 +1,18 @@
+* {
+	
+}
+
+.spot {
+	display: inline-block;
+	height: 50px;
+	width: 50px;
+	background-color: cyan;
+	border: 2px solid black;
+}
+
+.label {
+	display: inline-block;
+	width: 50px;
+	border: 2px solid white;
+	text-align: center;
+}
