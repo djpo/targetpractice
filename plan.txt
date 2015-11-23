@@ -44,4 +44,6 @@ beyond
 	report accuracy
 	make timer
 	keep score across games (total, average)
+		localStorage
+	add sound
 	make global high score list

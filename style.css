@@ -1,18 +1,24 @@
-* {
-	
+body {
+	background-color: black;
+	font-family: courier;
 }
 
-.spot {
+.vizSpot {
 	display: inline-block;
-	height: 50px;
-	width: 50px;
-	background-color: cyan;
-	border: 2px solid black;
+	height: 40px;
+	width: 40px;
+/*	background-color: black;	*/
+	border: 2px solid #66ffb2;
 }
 
 .label {
 	display: inline-block;
-	width: 50px;
-	border: 2px solid white;
+	width: 40px;
+	margin: 2px;
 	text-align: center;
+	color: #66daff
+}
+
+.hasDiscs {
+	background-color: orange;
 }
