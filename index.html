@@ -2,9 +2,13 @@
 <html>
 <head>
 	<title>TP</title>
-	<link rel="stylesheet" type="text/css" href="style.css">
+	<link rel="stylesheet" type="text/css" href="css/style.css">
 </head>
 <body>
+
+<div id="mainHeader">
+	<h1 id="headerTitle">TARGET PRACTICE PEW PEW</h1>
+</div>
 
 <div id="labels">
 	<div class="label">0</div>
@@ -32,14 +36,9 @@
 	<div id="9" class="vizSpot"></div>
 </div>
 
-<div id="startInput">
-	<button type="button" id ="start">start</button>
-	<button type="button" id="reset">reset</button>
-</div>
-
 <div id="report">
 	<p>
-		TIME REMAINING: <span id="timerTime">2:03</span>
+		TIME REMAINING: <span id="timerTime">---</span>
 	</p>
 	<p>
 		<span id="current">fire when ready...</span>
@@ -51,10 +50,14 @@
 	</p>
 </div>
 
+<div id="startInput">
+	<button type="button" id ="start">start</button>
+	<button type="button" id="reset">reset</button>
+</div>
 
 <footer>
-	<script src="jquery_1_11_3.js"></script>
-	<script type="text/javascript" src="script.js"></script>
+	<script src="js/jquery_1_11_3.js"></script>
+	<script type="text/javascript" src="js/script.js"></script>
 </footer>
 
 </body>

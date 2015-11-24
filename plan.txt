@@ -2,6 +2,10 @@ TARGET PRACTICE
 ____________________
 to do
 
+
+	report accuracy
+	make timer
+
 improve user interactivity
 	make restart button work
 	make welcome page
@@ -10,10 +14,11 @@ improve user interactivity
 style it up
 
 beyond
-	report accuracy
-	make timer
+
 	keep score across games (total, average)
 		localStorage
 	add sound
 	make global high score list
 	build levels
+
+	negative vel

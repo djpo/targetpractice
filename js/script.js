@@ -2,42 +2,28 @@
 var range = [];
 var discs = [];
 var sizeOfRange = 10;
-var numOfDiscs = 5;
-var target = '';
+var numOfDiscs = 20;
+var discSpeed = 5;
+var timer = 120;
 var gameOn = false;
-var gameInterval = '';
-// var timer = 120;
+var target = '';
 
-////////// game setup functions //////////
-function createSpotObjects() {
-	for (i = 0; i < sizeOfRange; i++) {
-		range[i] = {'hasDiscs': false, 'fireResult': ''};
-	}
-};
-function createDiscs () {
-	for (i = 0; i < numOfDiscs; i++) {
-		discs.push({});
-		discs[i].name = i;
-		discs[i].position = Math.floor(Math.random() * range.length);
-		discs[i].velocity = Math.ceil(Math.random() * 3);
-	}
-}
-
-////////// in-game user actions //////////
+////////// user actions //////////
 function startGame () {
+	// setup
 	gameOn = true;
 	createSpotObjects();
 	createDiscs();
 	createVizSpotListeners();
 	createResetListener();
-
-	update();
+	// begin
+	startUpdate();
 	gameInterval = setInterval(update, 1000);
-	timerInterval = setInterval(timerUpdate, 1000);
+	timerInterval = setInterval(timerTick, 1000);
 }
 function stopGame () {
 	gameOn = false;
-	updateViz();
+	// updateViz();
 	if (gameInterval) {
 		clearInterval(gameInterval);
 	}
@@ -46,15 +32,62 @@ function setTarget(num) {
 	target = num;
 }
 
-////////// in-game functions //////////
+////////// game setup functions //////////
+function createSpotObjects() {
+	for (i = 0; i < sizeOfRange; i++) {
+		range[i] = {'hasDiscs': false, 'fireResult': ''};
+	}
+}
+function createDiscs () {
+	for (i = 0; i < numOfDiscs; i++) {
+		discs.push({});
+		discs[i].name = i;
+		discs[i].position = Math.floor(Math.random() * range.length);
+		discs[i].velocity = Math.ceil(Math.random() * discSpeed) * (Math.round(Math.random()) * 2 - 1);
+	}
+	///// test below
+	$(discs).each(function (i) {
+		console.log('n:' + this.name + ', p:' + this.position + ', v:' + this.velocity);
+	});
+}
+function createVizSpotListeners() {
+	$('.vizSpot').on('click', function () {
+		console.log('hihihi');
+		setTarget(this.id);
+		$(this).addClass('aim');
+	});
+}
+function createResetListener() {
+	$('button#reset').on('click', function () {
+		console.log('reset button not configured');
+	});
+}
+
+////////// update functions //////////
+function startUpdate () {
+	target = '';
+	resetRange();
+	updateRange();
+	updateViz();
+	updateTimerViz();
+}
 function update () {
 	updateObjects();
 	fire(target);
 	updateViz();
 	target = '';
 	checkForWin();
-};
+}
+function timerTick () {
+	timer -= 1;
+	updateTimerViz();
+}
+function updateTimerViz () {
+	//$('#timerTime').text(Math.floor(timer / 60) + ':' + timer % 60);
+	$('#timerTime').text(timer);
+}
 
+////////// update > updateObjects() //////////
 function updateObjects () {
 	resetRange();
 	updateDiscs();
@@ -86,6 +119,7 @@ function updateRange () {
 	}
 }
 
+////////// update > fire(target) //////////
 function fire (target) {
 	if (target !== '') {
 		var spot = range[target];
@@ -126,7 +160,7 @@ function indexByName (array, name) {
 		}
 	}
 }
-
+////////// update > updateViz() //////////
 function updateViz () {
 	for (i = 0; i < range.length; i++) {
 		resetVizClass(i);
@@ -149,70 +183,26 @@ function addVizClass (i) {
 		$('#' + i).addClass('miss');
 	}
 }
-
+////////// update > checkForWin //////////
 function checkForWin () {
 	if (discs.length === 0) {
 		stopGame();
 		console.log("YOU DESTROYED ALL TARGETS!")
 	}
 }
-
-function createVizSpotListeners() {
-	$('.vizSpot').on('click', function () {
-		console.log('hihihi');
-		setTarget(this.id);
-		$(this).addClass('aim');
-	});
-}
+////////// on page ready //////////
 function createStartListener() {
 	$('#start').on('click', function () {
 		startGame();
 	});
 }
-function createResetListener() {
-	$('button#reset').on('click', function () {
-		console.log('reset button not configured');
-	});
-}
 
-////////// run commands, test //////////
 $(document).ready(function () {
-	createVizSpotListeners();
 	createStartListener();
 });
 
 ////////// in progress //////////
-/*
-function timerUpdate () {
-	timer --;
-	// $('#timerTime').((timer / 60) + ':' + (timer % 60));
-	$('#timerTime').text('hi');
-}
-*/
+
 
 ////////// examples //////////
-/*
-document.querySelector('#resetButton').addEventListener('click', function() {
-	resetCells()
-});
-for (var i = 0; i < allCells.length; i++) {
-	allCells[i].addEventListener('click', function() {
-		if (this.alreadyClicked !== 'yes') {
-			this.innerText = turn.innerText;
-			addColor(this);
-			this.alreadyClicked = 'yes';
-			checkForWin();
-		}
-	});
-}
 
-$('$todo-list').on('click', '.delete-button', deleteTodo);
-	will constantly look for .delete-button elements
-	final argument of .on() is a function
-		function doesn't have final ()
-		it will be called with argument of event
-...
-var deleteTodo = function(e) {
-	e.preventDefault();
-	e. ......
-*/
