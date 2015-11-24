@@ -21,19 +21,8 @@ game begins
 ____________________
 to do
 
-make 1 disc move
-	constant speed
-	DOM
-	bounce at ends
-
-add firing, hitting
-	make disc die/disappear 
-
-add more discs
-	randomize intial positions and velocities
-	randomize which disc is hit
-
 improve user interactivity
+	fire by clicking squares
 	add button to start game
 	add button to restart
 	make welcome page

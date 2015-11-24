@@ -19,6 +19,14 @@ body {
 	color: #66daff
 }
 
-.hasDiscs {
+.filled {
 	background-color: orange;
+}
+
+.hit {
+	background-color: red;
+}
+
+.miss {
+	background-color: white;
 }
