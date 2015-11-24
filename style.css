@@ -3,20 +3,36 @@ rgba(117, 219, 212, 0.51)
 */
 
 body {
+	max-width: 620px;
 	background-color: black;
-	font-family: courier;
 }
-
-button {
-	display: inline-block;
-	height: 40px;
-	width: 50px;
-	border: 3px solid #66daff;
-	text-transform: uppercase;
-	background-color: black;
+body * {
+	font-family: courier;
 	color: white;
 }
-
+button {
+	display: inline-block;
+	height: 46px;
+	width: 46px;
+	margin: 3px;
+	border: 3px solid #66daff;
+	text-transform: uppercase;
+	text-align: center;
+	font-size: 10px;
+	background-color: #66daff;
+	color: black;
+}
+#report {
+	max-width: 400px;
+	margin: 3px;
+	border: 1px double #66ffb2;
+}
+#report>p {
+	margin: 10px;
+	padding: 10px;
+	border: 1px solid #66daff;
+	border-radius: 10px;
+}
 .vizSpot {
 	display: inline-block;
 	height: 40px;
@@ -25,7 +41,6 @@ button {
 	border: 3px solid #66ffb2;
 	color: white;
 }
-
 .label {
 /*	display: inline-block;	*/
 	display: none;
@@ -34,20 +49,16 @@ button {
 	text-align: center;
 	color: #66daff
 }
-
 .filled {
 	background-color: orange;
 }
-
 .hit {
 	background-color: red;
 	border-color: yellow;
 }
-
 .miss {
 	background-color: white;
 }
-
 .aim {
 	border-color: white;
 }

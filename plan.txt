@@ -1,29 +1,11 @@
 TARGET PRACTICE
-
-____________________
-experience flow
-
-load page
-create button to start
-create form for difficulty
-
-____________________
-layout
-
-welcome page
-	description
-	instructions
-	set difficulty?
-
-game begins
-	setInterval
-
 ____________________
 to do
 
 improve user interactivity
 	make restart button work
 	make welcome page
+	create difficulty form before start
 
 style it up
 

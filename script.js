@@ -6,6 +6,7 @@ var numOfDiscs = 5;
 var target = '';
 var gameOn = false;
 var gameInterval = '';
+// var timer = 120;
 
 ////////// game setup functions //////////
 function createSpotObjects() {
@@ -32,6 +33,7 @@ function startGame () {
 
 	update();
 	gameInterval = setInterval(update, 1000);
+	timerInterval = setInterval(timerUpdate, 1000);
 }
 function stopGame () {
 	gameOn = false;
@@ -178,13 +180,17 @@ $(document).ready(function () {
 	createVizSpotListeners();
 	createStartListener();
 });
-// console.log('__________');
 
 ////////// in progress //////////
+/*
+function timerUpdate () {
+	timer --;
+	// $('#timerTime').((timer / 60) + ':' + (timer % 60));
+	$('#timerTime').text('hi');
+}
+*/
 
-
-
-
+////////// examples //////////
 /*
 document.querySelector('#resetButton').addEventListener('click', function() {
 	resetCells()
@@ -199,9 +205,7 @@ for (var i = 0; i < allCells.length; i++) {
 		}
 	});
 }
-*/
 
-/*
 $('$todo-list').on('click', '.delete-button', deleteTodo);
 	will constantly look for .delete-button elements
 	final argument of .on() is a function
