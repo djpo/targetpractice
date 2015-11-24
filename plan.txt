@@ -22,9 +22,7 @@ ____________________
 to do
 
 improve user interactivity
-	fire by clicking squares
-	add button to start game
-	add button to restart
+	make restart button work
 	make welcome page
 
 style it up
@@ -36,3 +34,4 @@ beyond
 		localStorage
 	add sound
 	make global high score list
+	build levels

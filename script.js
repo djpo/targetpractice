@@ -4,6 +4,8 @@ var discs = [];
 var sizeOfRange = 10;
 var numOfDiscs = 5;
 var target = '';
+var gameOn = false;
+var gameInterval = '';
 
 ////////// game setup functions //////////
 function createSpotObjects() {
@@ -22,10 +24,22 @@ function createDiscs () {
 
 ////////// in-game user actions //////////
 function startGame () {
+	gameOn = true;
+	createSpotObjects();
+	createDiscs();
+	createVizSpotListeners();
+	createResetListener();
+
 	update();
 	gameInterval = setInterval(update, 1000);
 }
-function stopGame () {clearInterval(gameInterval);}
+function stopGame () {
+	gameOn = false;
+	updateViz();
+	if (gameInterval) {
+		clearInterval(gameInterval);
+	}
+}
 function setTarget(num) {
 	target = num;
 }
@@ -118,18 +132,19 @@ function updateViz () {
 	}
 }
 function resetVizClass(i) {
-	$('#s' + i).removeClass('filled');
-	$('#s' + i).removeClass('hit');
-	$('#s' + i).removeClass('miss');
+	$('#' + i).removeClass('filled');
+	$('#' + i).removeClass('hit');
+	$('#' + i).removeClass('miss');
+	$('#' + i).removeClass('aim');
 }
 function addVizClass (i) {
 	if (range[i].hasDiscs) {
-		$('#s' + i).addClass('filled');
+		$('#' + i).addClass('filled');
 	}
 	if (range[i].fireResult === 'hit') {
-		$('#s' + i).addClass('hit');
+		$('#' + i).addClass('hit');
 	} else if (range[i].fireResult === 'miss') {
-		$('#s' + i).addClass('miss');
+		$('#' + i).addClass('miss');
 	}
 }
 
@@ -140,12 +155,60 @@ function checkForWin () {
 	}
 }
 
+function createVizSpotListeners() {
+	$('.vizSpot').on('click', function () {
+		console.log('hihihi');
+		setTarget(this.id);
+		$(this).addClass('aim');
+	});
+}
+function createStartListener() {
+	$('#start').on('click', function () {
+		startGame();
+	});
+}
+function createResetListener() {
+	$('button#reset').on('click', function () {
+		console.log('reset button not configured');
+	});
+}
+
 ////////// run commands, test //////////
 $(document).ready(function () {
-	createSpotObjects();
-	createDiscs();
+	createVizSpotListeners();
+	createStartListener();
 });
 // console.log('__________');
 
 ////////// in progress //////////
 
+
+
+
+/*
+document.querySelector('#resetButton').addEventListener('click', function() {
+	resetCells()
+});
+for (var i = 0; i < allCells.length; i++) {
+	allCells[i].addEventListener('click', function() {
+		if (this.alreadyClicked !== 'yes') {
+			this.innerText = turn.innerText;
+			addColor(this);
+			this.alreadyClicked = 'yes';
+			checkForWin();
+		}
+	});
+}
+*/
+
+/*
+$('$todo-list').on('click', '.delete-button', deleteTodo);
+	will constantly look for .delete-button elements
+	final argument of .on() is a function
+		function doesn't have final ()
+		it will be called with argument of event
+...
+var deleteTodo = function(e) {
+	e.preventDefault();
+	e. ......
+*/
