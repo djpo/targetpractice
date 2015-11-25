@@ -1,10 +1,12 @@
+////////// input variables //////////
+var sizeOfRange = 11;
+var numOfDiscs = 4;
+var discSpeed = 3;
+var timer = 60;
+var gameSpeed = 1000;
 ////////// game setup variables //////////
 var range = [];
 var discs = [];
-var sizeOfRange = 10;
-var numOfDiscs = 5;
-var discSpeed = 4;
-var timer = 8;
 var gameOn = false;
 var target = '';
 var fireCountRound = 0;
@@ -15,27 +17,33 @@ var hitCount = 0;
 var missCount = 0;
 var accuCount = 0;
 var message = 'Press START to begin.';
-
 ////////// user actions //////////
 function startGame () {
 	// setup
 	gameOn = true;
+	createRange(sizeOfRange);
 	createSpotObjects();
 	createDiscs();
 	createVizSpotAimListeners();
 	createResetListener();
 	// begin
 	startUpdate();
-	gameInterval = setInterval(update, 800);
+	gameInterval = setInterval(update, gameSpeed);
 	timerInterval = setInterval(timerTick, 1000);
 }
-function setTarget(num) {
+function createRange (num) {
+	var newRange = '';
+	for (i = 0; i < num; i++) {
+		newRange += '<div id="' + i + '" class="vizSpot"></div>';
+	}
+	$('#vizRange').html(newRange);
+}
+function setTarget (num) {
 	if (!locked) {
 		target = num;
 	}
 	locked = true;
 }
-
 ////////// game setup functions //////////
 function createSpotObjects() {
 	for (i = 0; i < sizeOfRange; i++) {
@@ -69,7 +77,6 @@ function newGameVariables () {
 	accuCountRound = 0;
 	message = '--';
 }
-
 ////////// update functions //////////
 function startUpdate () {
 	resetTarget();
@@ -103,7 +110,6 @@ function resetTarget () {
 	target = '';
 	locked = false;
 }
-
 ////////// update > updateObjects() //////////
 function updateObjects () {
 	message = '--';
@@ -136,7 +142,6 @@ function updateRange () {
 		range[discs[i].position].hasDiscs = true;
 	}
 }
-
 ////////// update > fire(target) //////////
 function fire (target) {
 	if (target !== '') {
@@ -170,7 +175,6 @@ function miss (spot) {
 function destroyOne (discsHere) {
 	var rand = Math.floor(Math.random() * discsHere.length);
 	var nameToDie = discsHere[rand].name;
-	console.log('destroying disc #' + nameToDie);
 	var indexToDie = indexByName (discs, nameToDie);
 	discs.splice(indexToDie, 1);
 }
@@ -214,7 +218,7 @@ function updateVizReport () {
 ////////// update > checkForEnd //////////
 function checkForEnd () {
 	if (discs.length === 0) {
-		message = 'GAME OVER - You destroyed all targets!';
+		message = 'GAME OVER - All targets destroyed!';
 		endGame();
 	} else if (timer <= 0) {
 		message = 'GAME OVER - You ran out of time!';
@@ -226,23 +230,18 @@ function endGame () {
 	gameOn = false;
 	locked = true;
 	updateViz();
-
 }
 function clearAllIntervals () {
 	clearInterval(gameInterval);
 	clearInterval(timerInterval);
 }
-
 ////////// on page ready //////////
 function createStartListener() {
-	$('#start').on('click', function () {
+	$('#start').on('click', function (e) {
 		startGame();
 	});
 }
-
 $(document).ready(function () {
 	createStartListener();
 });
-
 ////////// in progress //////////
-

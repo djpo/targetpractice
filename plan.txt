@@ -6,7 +6,8 @@ to do
 		before start: start
 		during game: stop
 		after game: start
-	make welcome page
+	make input fields that inform game variables
+		one for visualization mode (big range, fast gameSpeed)
 
 style it up
 	make responsive

@@ -40,13 +40,8 @@ body * {
 }
 
 /* ////////// range ////////// */
-.label {
-/*	display: inline-block;	*/
-	display: none;
-	width: 40px;
-	margin: 2px;
-	text-align: center;
-	color: #66daff
+#vizRange {
+/*	border: 1px solid #66daff;	*/
 }
 .vizSpot {
 	display: inline-block;
@@ -64,26 +59,35 @@ body * {
 	border-color: yellow;
 }
 .miss {
-	background-color: white;
+	border-color: purple;
 }
 .aim {
 	border-color: white;
 }
 
 /* ////////// non-range elements ////////// */
+.outer {
+	border: 1px solid #66ffb2;
+	background-color: rgba(102, 218, 255, .3);
+}
+.inner {
+	margin: 10px;
+	padding: 10px;
+	border: 1px solid #66daff;
+	border-radius: 10px;
+	background-color: black;
+}
 #mainHeader {
 	height: auto;
 	width: auto;
 	margin: 3px 3px 12px 3px;
-	border: 1px solid #66ffb2;
 }
 #headerTitle {
 	height: auto;
 	width: auto;
-	margin: 5px;
+/*	margin: 5px;
 	padding-top: 4px;
-	border: 1px solid #66ffb2;
-	text-align: center;
+*/	text-align: center;
 	line-height: 50px;
 	font-family: nimavisual, courier;
 	font-size: 45px;
@@ -92,15 +96,15 @@ body * {
 #report {
 	max-width: 400px;
 	margin: 10px 3px 10px 3px;
-	border: 1px solid #66ffb2;
-	background-color: rgba(102, 218, 255, .3);
 }
 #report>p {
+/*
 	margin: 10px;
 	padding: 10px;
 	border: 1px solid #66daff;
 	border-radius: 10px;
 	background-color: black;
+*/
 }
 button {
 	height: 46px;
