@@ -85,7 +85,8 @@ body * {
 }
 #instructions .header {
 	text-align: center;
-	font-size: 20px;
+	font-size: 18px;
+	color: rgba(187, 153, 255, 1);
 }
 /* ////////// buttons ////////// */
 #buttons {
@@ -143,11 +144,11 @@ button {
 	color: white;
 }
 .filled {
-	background-color: orange;
+	background-color: #df9220;
 }
 .hit {
-	background-color: red;
-	border-color: yellow;
+	background-color: #ff0065;
+	border-color: #ffff66;
 }
 .miss {
 	border-color: #bb99ff;
