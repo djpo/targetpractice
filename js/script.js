@@ -1,7 +1,7 @@
 ////////// input variables //////////
-var sizeOfRange = 16;
-var numOfDiscs = 6;
-var discSpeed = 4;
+var sizeOfRange = 15;
+var numOfDiscs = 5;
+var discSpeed = 3;
 var timer = 60;
 var gameSpeed = 1000;
 ////////// game setup variables //////////
@@ -17,21 +17,31 @@ var hitCount = 0;
 var missCount = 0;
 var accuCount = 0;
 var message = 'Press START to begin.';
+
 ////////// user actions //////////
 function startGame () {
 	// setup
 	gameOn = true;
+	takeInput();
 	createRange(sizeOfRange);
 	createSpotObjects();
 	createDiscs();
 	createVizSpotAimListeners();
 	createResetListener();
-	// $('.welcome').hide();
-	// $('.notWelcome').show();
+	$('.welcome').hide();
+	$('.notWelcome').show();
 	// begin
 	startUpdate();
 	gameInterval = setInterval(update, gameSpeed);
 	timerInterval = setInterval(timerTick, 1000);
+}
+////////// game setup functions //////////
+function takeInput () {
+	sizeOfRange = $('#variSpaces').val();
+	numOfDiscs = $('#variDiscs').val();
+	discSpeed = $('#variVel').val();
+	gameSpeed = $('#variGameSpeed').val() * 1000;
+	timer = $('#variTimer').val();
 }
 function createRange (num) {
 	var newRange = '';
@@ -40,13 +50,6 @@ function createRange (num) {
 	}
 	$('#vizRange').html(newRange);
 }
-function setTarget (num) {
-	if (!locked) {
-		target = num;
-	}
-	locked = true;
-}
-////////// game setup functions //////////
 function createSpotObjects() {
 	for (i = 0; i < sizeOfRange; i++) {
 		range[i] = {'hasDiscs': false, 'fireResult': ''};
@@ -69,8 +72,10 @@ function createVizSpotAimListeners() {
 	});
 }
 function createResetListener() {
-	$('button#reset').on('click', function () {
+	$('button#restart').on('click', function () {
 		console.log('reset button not configured');
+			$('.notWelcome').hide();
+			$('.welcome').show();
 	});
 }
 function newGameVariables () {
@@ -111,6 +116,12 @@ function updateTimerViz () {
 function resetTarget () {
 	target = '';
 	locked = false;
+}
+function setTarget (num) {
+	if (!locked) {
+		target = num;
+	}
+	locked = true;
 }
 ////////// update > updateObjects() //////////
 function updateObjects () {

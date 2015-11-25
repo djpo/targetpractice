@@ -33,7 +33,7 @@ body {
 }
 body * {
 	font-family: courier;
-	font-size: 12px;
+	font-size: 10px;
 	color: white;
 }
 .container {
@@ -53,6 +53,8 @@ body * {
 	background-color: black;
 }
 .welcome {
+}
+.notWelcome {
 	display: none;
 }
 /* ////////// header ////////// */
@@ -67,8 +69,15 @@ body * {
 	font-weight: bold;
 	color: #66daff;
 }
-/* ////////// report ////////// */
-
+/* ////////// instructions ////////// */
+#instructions {
+	margin-top: 10px;
+	font-size: 15px;
+}
+#instructions .header {
+	text-align: center;
+	font-size: 20px;
+}
 /* ////////// buttons ////////// */
 #buttons {
 	box-shadow: 0px 0px 15px 3px rgba(102, 218, 255, .5);
@@ -92,9 +101,13 @@ button {
 /* ////////// input ////////// */
 form input.form-control {
 	float: right;
-	margin-right: 5px;
-	width: 50px;
+	width: 60px;
 	height: 20px;
+	border-color: #bb99ff;
+	background-color: black;
+	font-size: 12px;
+	padding: 0px 5px;
+	color: rgba(102, 255, 178, 1);
 }
 /* ////////// range ////////// */
 #vizRange {

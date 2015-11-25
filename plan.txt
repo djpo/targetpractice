@@ -2,21 +2,18 @@ TARGET PRACTICE
 ____________________
 
 style
-2	welcome page
 	start and end game animation
-3	add sound
+	add sound
 
 functionality
-4	make round score, display
-5	better buttons
+	make round score, display
+	better buttons
 		before start: start
 		during game: pause, stop/return to welcom
 		after game: start
-6	make input fields that inform game variables
-		one for visualization mode (big range, fast gameSpeed)
 
 beyond
 	keep score across games (total, average)
 		localStorage
 	create difficulty form before start
-		build levels
+		one for visualizer
