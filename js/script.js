@@ -17,7 +17,6 @@ var hitCount = 0;
 var missCount = 0;
 var accuCount = 0;
 var message = 'Press START to begin.';
-
 ////////// user actions //////////
 function startGame () {
 	// setup
@@ -213,7 +212,6 @@ function resetVizClass(i) {
 	$('#' + i).removeClass('miss');
 	$('#' + i).removeClass('aim');
 	$('#' + i).removeClass('end');
-
 }
 function addVizClass (i) {
 	if (range[i].hasDiscs) {
@@ -225,13 +223,11 @@ function addVizClass (i) {
 		$('#' + i).addClass('miss');
 	}
 }
-
 function addEndStyle () {
 	if (!gameOn) {
 		$('.vizSpot').addClass('over');
 	}
 }
-
 function updateVizReport () {
 	$('#message').text(message);
 	$('#hitCountRound').text(hitCountRound);

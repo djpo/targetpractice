@@ -33,7 +33,7 @@ body {
 }
 body * {
 	font-family: courier;
-	font-size: 10px;
+	font-size: 11px;
 	color: white;
 }
 .container {
@@ -43,7 +43,7 @@ body * {
 	padding: 5px;
 	border: 1px solid #66ffb2;
 	background-color: rgba(102, 218, 255, .3);
-	box-shadow: 0px 0px 15px 3px rgba(102, 255, 178, .5);
+	box-shadow: 0px 0px 50px 3px rgba(102, 255, 178, .5);
 }
 .inner {
 	margin: 5px;
@@ -69,6 +69,15 @@ body * {
 	font-weight: bold;
 	color: #66daff;
 }
+/* ////////// infoBody ////////// */
+#infoBody.row {
+	margin-top: 20px;
+	margin-bottom: 20px;
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	display: flex;
+}
 /* ////////// instructions ////////// */
 #instructions {
 	margin-top: 10px;
@@ -80,17 +89,25 @@ body * {
 }
 /* ////////// buttons ////////// */
 #buttons {
-	box-shadow: 0px 0px 15px 3px rgba(102, 218, 255, .5);
+	box-shadow: 0px 0px 50px 8px rgba(102, 218, 255, .5);
 	background-color: none;
 	border: 1px solid #66daff;
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+#buttons>div {
+	padding-top: 30px;
+	padding-top: 30px;
 	text-align: center;
 	vertical-align: center;
 }
 button {
 	height: 50px;
-	width: 50px;
-	min-width: 50px;
+	width: 80%;
+	min-width: 40px;
 	margin: 10px auto;
+	padding: 0px;
+	position: center;
 	text-transform: uppercase;
 	text-align: center;
 	vertical-align: center;
@@ -99,7 +116,7 @@ button {
 	background-color: rgba(102, 218, 255, .3);
 }
 /* ////////// input ////////// */
-form input.form-control {
+#inputForm input.form-control {
 	float: right;
 	width: 60px;
 	height: 20px;
@@ -107,6 +124,7 @@ form input.form-control {
 	background-color: black;
 	font-size: 12px;
 	padding: 0px 5px;
+	vertical-align: center;
 	color: rgba(102, 255, 178, 1);
 }
 /* ////////// range ////////// */
