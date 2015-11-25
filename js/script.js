@@ -1,7 +1,7 @@
 ////////// input variables //////////
-var sizeOfRange = 11;
-var numOfDiscs = 4;
-var discSpeed = 3;
+var sizeOfRange = 16;
+var numOfDiscs = 6;
+var discSpeed = 4;
 var timer = 60;
 var gameSpeed = 1000;
 ////////// game setup variables //////////
@@ -26,6 +26,8 @@ function startGame () {
 	createDiscs();
 	createVizSpotAimListeners();
 	createResetListener();
+	// $('.welcome').hide();
+	// $('.notWelcome').show();
 	// begin
 	startUpdate();
 	gameInterval = setInterval(update, gameSpeed);
@@ -191,6 +193,7 @@ function updateViz () {
 		resetVizClass(i);
 		addVizClass(i);
 	}
+	addEndStyle();
 	updateVizReport();
 }
 function resetVizClass(i) {
@@ -198,6 +201,8 @@ function resetVizClass(i) {
 	$('#' + i).removeClass('hit');
 	$('#' + i).removeClass('miss');
 	$('#' + i).removeClass('aim');
+	$('#' + i).removeClass('end');
+
 }
 function addVizClass (i) {
 	if (range[i].hasDiscs) {
@@ -209,6 +214,13 @@ function addVizClass (i) {
 		$('#' + i).addClass('miss');
 	}
 }
+
+function addEndStyle () {
+	if (!gameOn) {
+		$('.vizSpot').addClass('over');
+	}
+}
+
 function updateVizReport () {
 	$('#message').text(message);
 	$('#hitCountRound').text(hitCountRound);

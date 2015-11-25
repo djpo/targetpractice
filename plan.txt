@@ -1,19 +1,19 @@
 TARGET PRACTICE
 ____________________
-to do
-	make round score, display
-	better buttons
-		before start: start
-		during game: stop
-		after game: start
-	make input fields that inform game variables
-		one for visualization mode (big range, fast gameSpeed)
 
-style it up
-	make responsive
-	welcome page
+style
+2	welcome page
 	start and end game animation
-	add sound
+3	add sound
+
+functionality
+4	make round score, display
+5	better buttons
+		before start: start
+		during game: pause, stop/return to welcom
+		after game: start
+6	make input fields that inform game variables
+		one for visualization mode (big range, fast gameSpeed)
 
 beyond
 	keep score across games (total, average)

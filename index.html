@@ -2,40 +2,64 @@
 <html>
 <head>
 	<title>Target Practice</title>
+	<link rel="stylesheet" type="text/css" href="css/bootstrap_3_3_5.css">
 	<link rel="stylesheet" type="text/css" href="css/style.css">
 </head>
 <body>
+<div class="container">
 
-<div id="mainHeader" class="outer">
-	<h1 id="headerTitle" class="inner">TARGET PRACTICE</h1>
+	<div id="mainHeader" class="outer row">
+		<h1 id="headerTitle" class="inner">TARGET PRACTICE</h1>
+	</div>
+
+	<div id="infoBody" class="row">
+
+		<div id="startInput" class="col-xs-6 outer welcome">
+			<form class="form-horizontal" role="form">
+				<div class="form-group inner">
+					range size
+					<input type="number" class="form-control" id="variSpaces">
+				</div>
+				<div class="form-group inner">
+					number of discs
+					<input type="number" class="form-control" id="variDiscs">
+				</div>
+				<div class="form-group inner">
+					speed of discs
+					<input type="number" class="form-control" id="variVel">
+				</div>
+			</form>
+		</div>
+
+		<div id="report" class="col-xs-6 outer notWelcome">
+			<p class="inner">
+				<span id="message">Press START to begin game.</span>
+			</p>
+			<p class="inner">
+				TIME REMAINING: <span id="timerTime">--</span>
+			</p>
+			<p class="inner">
+				HITS: <span id="hitCountRound">--</span><br>
+				MISSES: <span id="missCountRound">--</span><br>
+				ACCURACY: <span id="accuCountRound">--</span><br>
+			</p>
+		</div>
+
+		<div id="buttons" class="col-xs-offset-1 col-xs-2">
+			<button type="button" id ="start">start</button>
+			<button type="button" id="reset">reset</button>
+		</div>
+
+	</div>
+
+	<div id="vizRange" class="row">
+	</div>
+
 </div>
-
-<div id="vizRange">
-</div>
-
-<div id="report" class="outer">
-	<p class="inner">
-		<span id="message">Press START to begin game.</span>
-	</p>
-	<p class="inner">
-		TIME REMAINING: <span id="timerTime">--</span>
-	</p>
-	<p class="inner">
-		HITS: <span id="hitCountRound">--</span><br>
-		MISSES: <span id="missCountRound">--</span><br>
-		ACCURACY: <span id="accuCountRound">--</span><br>
-	</p>
-</div>
-
-<div id="startInput">
-	<button type="button" id ="start">start</button>
-	<!-- <button type="button" id="reset">reset</button> -->
-</div>
-
 <footer>
 	<script src="js/jquery_1_11_3.js"></script>
 	<script type="text/javascript" src="js/script.js"></script>
 </footer>
-
 </body>
 </html>
+
