@@ -1,7 +1,6 @@
 /* ////////// color palette ////////// */
 /*
 translucence: a0.3;
-
 green
 	rgba(102, 255, 178, 1)
 light blue
@@ -12,7 +11,6 @@ teal (not used yet)
 */
 
 /* ////////// fonts ////////// */
-
 @font-face {
 	font-family: 'nimavisual';
 	src: url('fonts/nimavisual.otf') format('opentype');
@@ -105,7 +103,6 @@ body * {
 	background-color: black;
 }
 button {
-/*	display: inline-block;	*/
 	height: 46px;
 	width: 46px;
 	margin: 3px;

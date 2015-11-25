@@ -2,11 +2,19 @@
 var range = [];
 var discs = [];
 var sizeOfRange = 10;
-var numOfDiscs = 20;
-var discSpeed = 5;
-var timer = 120;
+var numOfDiscs = 5;
+var discSpeed = 4;
+var timer = 8;
 var gameOn = false;
 var target = '';
+var fireCountRound = 0;
+var hitCountRound = 0;
+var missCountRound = 0;
+var accuCountRound = 0;
+var hitCount = 0;
+var missCount = 0;
+var accuCount = 0;
+var message = 'Press START to begin.';
 
 ////////// user actions //////////
 function startGame () {
@@ -14,22 +22,18 @@ function startGame () {
 	gameOn = true;
 	createSpotObjects();
 	createDiscs();
-	createVizSpotListeners();
+	createVizSpotAimListeners();
 	createResetListener();
 	// begin
 	startUpdate();
-	gameInterval = setInterval(update, 1000);
+	gameInterval = setInterval(update, 800);
 	timerInterval = setInterval(timerTick, 1000);
 }
-function stopGame () {
-	gameOn = false;
-	// updateViz();
-	if (gameInterval) {
-		clearInterval(gameInterval);
-	}
-}
 function setTarget(num) {
-	target = num;
+	if (!locked) {
+		target = num;
+	}
+	locked = true;
 }
 
 ////////// game setup functions //////////
@@ -45,16 +49,13 @@ function createDiscs () {
 		discs[i].position = Math.floor(Math.random() * range.length);
 		discs[i].velocity = Math.ceil(Math.random() * discSpeed) * (Math.round(Math.random()) * 2 - 1);
 	}
-	///// test below
-	$(discs).each(function (i) {
-		console.log('n:' + this.name + ', p:' + this.position + ', v:' + this.velocity);
-	});
 }
-function createVizSpotListeners() {
+function createVizSpotAimListeners() {
 	$('.vizSpot').on('click', function () {
-		console.log('hihihi');
+		if (locked === false) {
+			$(this).addClass('aim');
+		}
 		setTarget(this.id);
-		$(this).addClass('aim');
 	});
 }
 function createResetListener() {
@@ -62,10 +63,17 @@ function createResetListener() {
 		console.log('reset button not configured');
 	});
 }
+function newGameVariables () {
+	hitCountRound = 0;
+	missCountRound = 0;
+	accuCountRound = 0;
+	message = '--';
+}
 
 ////////// update functions //////////
 function startUpdate () {
-	target = '';
+	resetTarget();
+	newGameVariables();
 	resetRange();
 	updateRange();
 	updateViz();
@@ -75,20 +83,30 @@ function update () {
 	updateObjects();
 	fire(target);
 	updateViz();
-	target = '';
-	checkForWin();
+	resetTarget();
+	checkForEnd();
 }
 function timerTick () {
 	timer -= 1;
 	updateTimerViz();
 }
 function updateTimerViz () {
-	//$('#timerTime').text(Math.floor(timer / 60) + ':' + timer % 60);
-	$('#timerTime').text(timer);
+	if (timer <= 0) {
+		$('#timerTime').text('--');
+	} else {
+		var sec = timer % 60;
+		var newText = Math.floor(timer / 60) + ':' + (sec > 9 ? "" + sec : "0" + sec);
+		$('#timerTime').text(newText);
+	}
+}
+function resetTarget () {
+	target = '';
+	locked = false;
 }
 
 ////////// update > updateObjects() //////////
 function updateObjects () {
+	message = '--';
 	resetRange();
 	updateDiscs();
 	updateRange();
@@ -123,12 +141,13 @@ function updateRange () {
 function fire (target) {
 	if (target !== '') {
 		var spot = range[target];
-		console.log('fired at ' + target);
 		if (spot.hasDiscs) {
 			hit (spot);
 		} else {
 			miss (spot);
 		}
+		fireCountRound += 1;
+		accuCountRound = hitCountRound / fireCountRound;
 	}
 }
 function hit (spot) {
@@ -139,12 +158,14 @@ function hit (spot) {
 			discsHere.push(discs[i]);
 		}
 	});
-	console.log('hit! there are ' + discsHere.length + ' discs here');
+	message = 'HIT!';
 	destroyOne(discsHere);
+	hitCountRound += 1;
 }
 function miss (spot) {
 	spot.fireResult = 'miss';
-	console.log('miss!');
+	message = 'MISS!';
+	missCountRound += 1;
 }
 function destroyOne (discsHere) {
 	var rand = Math.floor(Math.random() * discsHere.length);
@@ -166,6 +187,7 @@ function updateViz () {
 		resetVizClass(i);
 		addVizClass(i);
 	}
+	updateVizReport();
 }
 function resetVizClass(i) {
 	$('#' + i).removeClass('filled');
@@ -183,13 +205,34 @@ function addVizClass (i) {
 		$('#' + i).addClass('miss');
 	}
 }
-////////// update > checkForWin //////////
-function checkForWin () {
+function updateVizReport () {
+	$('#message').text(message);
+	$('#hitCountRound').text(hitCountRound);
+	$('#missCountRound').text(missCountRound);
+	$('#accuCountRound').text(Math.round(accuCountRound * 100) + '%');
+}
+////////// update > checkForEnd //////////
+function checkForEnd () {
 	if (discs.length === 0) {
-		stopGame();
-		console.log("YOU DESTROYED ALL TARGETS!")
+		message = 'GAME OVER - You destroyed all targets!';
+		endGame();
+	} else if (timer <= 0) {
+		message = 'GAME OVER - You ran out of time!';
+		endGame();
 	}
 }
+function endGame () {
+	clearAllIntervals()
+	gameOn = false;
+	locked = true;
+	updateViz();
+
+}
+function clearAllIntervals () {
+	clearInterval(gameInterval);
+	clearInterval(timerInterval);
+}
+
 ////////// on page ready //////////
 function createStartListener() {
 	$('#start').on('click', function () {
@@ -202,7 +245,4 @@ $(document).ready(function () {
 });
 
 ////////// in progress //////////
-
-
-////////// examples //////////
 
