@@ -84,8 +84,8 @@ body * {
 	font-size: 15px;
 }
 #instructions .header {
-	text-align: center;
-	font-size: 18px;
+/*	text-align: center;	*/
+	font-size: 15px;
 	color: rgba(187, 153, 255, 1);
 }
 /* ////////// buttons ////////// */
