@@ -265,8 +265,4 @@ $(document).ready(function () {
 	setVizSettings();
 	createStartListener();
 });
-////////// in progress //////////
 
-/*
-make sections/divs inside infoReport(?): .multiStats #missCountMulti, etc
-*/
