@@ -1,109 +1,103 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Target Practice</title>
-	<link rel="stylesheet" type="text/css" href="css/bootstrap_3_3_5.css">
-	<link rel="stylesheet" type="text/css" href="css/style.css">
+  <title>Target Practice</title>
+  <link rel="stylesheet" type="text/css" href="css/bootstrap_3_3_5.css">
+  <link rel="stylesheet" type="text/css" href="css/style.css">
 </head>
 <body>
 <div class="container">
 
-	<div id="mainHeader" class="outer row">
-		<h1 id="headerTitle" class="inner">TARGET PRACTICE</h1>
-	</div>
+  <div id="mainHeader" class="outer row">
+    <h1 id="headerTitle" class="inner">TARGET PRACTICE</h1>
+  </div>
 
-	<div id="infoBody" class="row">
+  <div id="infoBody" class="row">
 
-		<div id="startInput" class="col-xs-6 outer welcome">
-			<form id="inputForm">
-				<div class="form-control inner">
-					<div class="col-xs-8">
-						range size
-					</div>
-					<div class="col-xs-4">
-						<input name="variSpaces" type="number" class="form-control" id="variSpaces" value="" placeholder="15">
-					</div>
-				</div>
-				<div class="form-control inner">
-					<div class="col-xs-8">
-						number of discs
-					</div>
-					<div class="col-xs-4">
-						<input type="number" class="form-control" id="variDiscs" value="" placeholder="5">
-					</div>
-				</div>
-				<div class="form-control inner">
-					<div class="col-xs-8">
-						range of disc speed
-					</div>
-					<div class="col-xs-4">
-						<input type="number" class="form-control" id="variVel" value="" placeholder="3">
-					</div>
-				</div>
-				<div class="form-control inner">
-					<div class="col-xs-8">
-						refresh rate (sec)
-					</div>
-					<div class="col-xs-4">
-						<input type="number" class="form-control" id="variGameSpeed" value="" placeholder="1.00">
-					</div>
-				</div>
-				<div class="form-control inner">
-					<div class="col-xs-8">
-						timer length (sec)
-					</div>
-					<div class="col-xs-4">
-						<input type="number" class="form-control" id="variTimer" value="" placeholder="60">
-					</div>
-				</div>
-			</form>
-		</div>
+    <div id="startInput" class="col-xs-6 outer welcome">
+      <form id="inputForm">
+        <div class="form-control inner">
+          <div class="col-xs-8">range size</div>
+          <div class="col-xs-4">
+            <input name="variSpaces" type="number" class="form-control" id="variSpaces" value="" placeholder="15">
+          </div>
+        </div>
+        <div class="form-control inner">
+          <div class="col-xs-8">number of discs</div>
+          <div class="col-xs-4">
+            <input type="number" class="form-control" id="variDiscs" value="" placeholder="5">
+          </div>
+        </div>
+        <div class="form-control inner">
+          <div class="col-xs-8">range of disc speed</div>
+          <div class="col-xs-4">
+            <input type="number" class="form-control" id="variVel" value="" placeholder="3">
+          </div>
+        </div>
+        <div class="form-control inner">
+          <div class="col-xs-8">refresh rate (sec)</div>
+          <div class="col-xs-4">
+            <input type="number" class="form-control" id="variGameSpeed" value="" placeholder="1.00">
+          </div>
+        </div>
+        <div class="form-control inner">
+          <div class="col-xs-8">timer length (sec)</div>
+          <div class="col-xs-4">
+            <input type="number" class="form-control" id="variTimer" value="" placeholder="60">
+          </div>
+        </div>
+      </form>
+    </div>
 
-		<div id="report" class="col-xs-6 outer notWelcome">
-			<p class="inner">
-				<span id="message">Press START to begin game.</span>
-			</p>
-			<p class="inner">
-				TIME REMAINING: <span id="timerTime">--</span>
-			</p>
-			<p class="inner">
-				HITS: <span id="hitCountRound">--</span><br>
-				MISSES: <span id="missCountRound">--</span><br>
-				ACCURACY: <span id="accuCountRound">--</span><br>
-			</p>
-		</div>
+    <div id="report" class="col-xs-6 outer notWelcome">
+      <p class="inner">
+        <span id="message">Press START to begin game.</span>
+      </p>
+      <p class="inner">
+        TIME REMAINING: <span id="timerTime">--</span>
+      </p>
+      <p class="inner">
+        HITS: <span id="hitCountRound">--</span><br>
+        MISSES: <span id="missCountRound">--</span><br>
+        ACCURACY: <span id="accuCountRound">--</span><br>
+      </p>
+    </div>
 
-		<div id="buttons" class="col-xs-offset-2 col-xs-2">
-			<div>
-				<button type="button" id ="start">start</button>
-				<button type="button" id="restart">new</button>
-			</div>
-		</div>
+    <div id="buttons" class="col-xs-offset-2 col-xs-2">
+      <div>
+        <button type="button" id ="start">start</button>
+        <button type="button" id="restart">new</button>
+      </div>
+    </div>
 
-	</div>
+  </div>
 
-	<div id="vizRange" class="row notWelcome">
-	</div>
+  <div id="vizRange" class="row notWelcome">
+  </div>
 
-	<div id="instructions" class="row outer welcome">
-		<p class="inner header">
-			Welcome to the skeet shooter of the future!
-		</p>
-		<p class="inner">
-			The object of the game is to destroy all the discs before the timer runs out. Each disc moves at a constant speed, but you can't tell one from another. Click a square before the next refresh to fire.
-		</p>
-		<p class="inner">
-			Enter in custom game settings (or use the default ones), click START, then fire away!
-		</p>
-		<p class="inner">
-			Try a big range with a short refresh rate for a visual treat!
-		</p>
-	</div>
+  <div id="instructions" class="row outer welcome">
+    <p class="inner header">
+      Welcome to the skeet shooter of the future!
+    </p>
+    <p class="inner">
+      The object of the game is to destroy all the discs before the timer runs out. Each disc moves at a constant speed, but you can't tell one from another. Click a square before the next refresh to fire.
+    </p>
+    <p class="inner">
+      Enter in custom game settings (or use the default ones), click START, then fire away!
+    </p>
+    <p class="inner">
+      Try a big range with a short refresh rate for a visual treat!
+    </p>
+  </div>
 
 </div>
 <footer>
-	<script src="js/jquery_1_11_3.js"></script>
-	<script type="text/javascript" src="js/script.js"></script>
+  <script src="js/jquery_1_11_3.js"></script>
+  <script type="text/javascript" src="js/settings.js"></script>
+  <script type="text/javascript" src="js/userActions.js"></script>
+  <script type="text/javascript" src="js/gameSetup.js"></script>
+  <script type="text/javascript" src="js/update.js"></script>
+  <script type="text/javascript" src="js/ready.js"></script>
 </footer>
 </body>
 </html>
