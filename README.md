@@ -1,6 +1,6 @@
 ## Target Practice
 
-[Live site](djpo.github.io/targetpractice)
+[Live site](https://djpo.github.io/targetpractice)
 
 Target Practice is a space age skeet shooter that tests your pattern recognition and concentration. It was inspired by a game I played many years ago on a text-based, role-playing MUD in the Ender's Game universe.
 
